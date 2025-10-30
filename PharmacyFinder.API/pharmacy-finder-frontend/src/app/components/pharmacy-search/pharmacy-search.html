@@ -1,0 +1,61 @@
+<div class="pharmacy-search-container">
+  <mat-card class="search-card">
+    <mat-card-header>
+      <div class="header-content">
+        <button mat-icon-button (click)="goBack()" class="back-btn">
+         <!-- <mat-icon>arrow_back</mat-icon>-->
+        </button>
+        <div>
+          <mat-card-title>Search Pharmacies</mat-card-title>
+          <mat-card-subtitle>Find pharmacies by location</mat-card-subtitle>
+        </div>
+      </div>
+    </mat-card-header>
+
+    <mat-card-content>
+      <form [formGroup]="searchForm" (ngSubmit)="onSearch()">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Enter Address or Location</mat-label>
+          <input matInput formControlName="address" required>
+          <!--<mat-icon matSuffix>location_on</mat-icon>-->
+        </mat-form-field>
+
+        <button mat-raised-button color="primary" type="submit" class="full-width" [disabled]="isLoading">
+          <mat-spinner diameter="20" *ngIf="isLoading"></mat-spinner>
+          <span *ngIf="!isLoading">Search Pharmacies</span>
+          <span *ngIf="isLoading">Searching...</span>
+        </button>
+      </form>
+
+      <div *ngIf="errorMessage" class="error-message">
+        <!--<mat-icon>error</mat-icon> -->
+        {{ errorMessage }}
+      </div>
+
+      <div *ngIf="searchResults.length > 0" class="search-results">
+        <h3>Found {{ searchResults.length }} Pharmacy(s)</h3>
+
+        <div class="results-grid">
+          <mat-card *ngFor="let pharmacy of searchResults" class="pharmacy-card">
+            <mat-card-content>
+              <div class="pharmacy-header">
+                <h4>{{ pharmacy.name }}</h4>
+                <span [class]="pharmacy.isApproved ? 'status-approved' : 'status-pending'">
+                  {{ pharmacy.isApproved ? '✓ Approved' : '⏳ Pending' }}
+                </span>
+              </div>
+              <p><mat-icon>location_on</mat-icon> {{ pharmacy.address }}</p>
+              <p *ngIf="pharmacy.phone"><mat-icon>phone</mat-icon> {{ pharmacy.phone }}</p>
+              <p *ngIf="pharmacy.email"><mat-icon>email</mat-icon> {{ pharmacy.email }}</p>
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </div>
+
+      <div *ngIf="searchResults.length === 0 && !isLoading && searchForm.value.address" class="no-results">
+        <!-- <mat-icon>search_off</mat-icon> -->
+        <p>No pharmacies found in this location. Try a different address.</p>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

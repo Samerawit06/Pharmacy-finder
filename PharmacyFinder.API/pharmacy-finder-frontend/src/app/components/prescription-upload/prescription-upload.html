@@ -1,0 +1,103 @@
+<div class="container">
+  <mat-card>
+    <mat-card-header>
+      <div class="header-content">
+        <button mat-icon-button (click)="goBack()" class="back-btn">
+          <!-- <mat-icon>arrow_back</mat-icon> -->
+        </button>
+        <div>
+          <mat-card-title>Upload Prescription</mat-card-title>
+          <mat-card-subtitle>Upload your prescription for automatic medicine matching</mat-card-subtitle>
+        </div>
+      </div>
+    </mat-card-header>
+
+    <mat-card-content>
+      <div class="content" *ngIf="!uploadResult">
+        <!-- File Upload Area -->
+        <div class="upload-area" (click)="fileInput.click()" [class.drag-over]="isDragOver">
+          <input #fileInput
+                 type="file"
+                 (change)="onFileSelected($event)"
+                 accept="image/*"
+                 hidden>
+          <!-- <mat-icon class="large-icon">cloud_upload</mat-icon>-->
+          <h3>Upload Prescription Image</h3>
+          <p>Click to browse or drag and drop your prescription image</p>
+          <p class="file-types">Supported formats: JPG, PNG, JPEG</p>
+
+          <div *ngIf="selectedFile" class="file-info">
+            <!-- <mat-icon>description</mat-icon> -->
+            <span>{{ selectedFile.name }}</span>
+            <button mat-icon-button (click)="removeFile($event)">
+              <mat-icon>close</mat-icon>
+            </button>
+          </div>
+        </div>
+
+        <!-- Upload Button -->
+        <button mat-raised-button
+                color="primary"
+                (click)="uploadPrescription()"
+                [disabled]="!selectedFile || isUploading"
+                class="upload-btn">
+          <mat-spinner diameter="20" *ngIf="isUploading"></mat-spinner>
+          <span *ngIf="!isUploading">Extract Medicines from Prescription</span>
+          <span *ngIf="isUploading">Processing...</span>
+        </button>
+      </div>
+
+      <!-- Results Section -->
+      <div *ngIf="uploadResult" class="results-section">
+        <div class="success-message">
+          <!-- <mat-icon class="success-icon">check_circle</mat-icon> -->
+          <h3>Prescription Processed Successfully!</h3>
+          <p>Extracted text: "{{ uploadResult.extractedText }}"</p>
+        </div>
+
+        <div *ngIf="uploadResult.foundMedicines.length > 0" class="medicines-found">
+          <h4>Found {{ uploadResult.foundMedicines.length }} Medicine(s)</h4>
+
+          <div class="medicine-grid">
+            <mat-card *ngFor="let medicine of uploadResult.foundMedicines" class="medicine-card">
+              <mat-card-content>
+                <div class="medicine-header">
+                  <h5>{{ medicine.medicineName }}</h5>
+                  <span [class]="medicine.isApproved ? 'status-approved' : 'status-pending'">
+                    {{ medicine.isApproved ? '✓ Approved' : '⏳ Pending' }}
+                  </span>
+                </div>
+                <p class="pharmacy-name">{{ medicine.pharmacyName }}</p>
+                <p class="price">Price: ${{ medicine.price }}</p>
+                <p class="address">
+                  <mat-icon>location_on</mat-icon>
+                  {{ medicine.address }}
+                </p>
+                <p *ngIf="medicine.phone" class="contact">
+                  <mat-icon>phone</mat-icon>
+                  {{ medicine.phone }}
+                </p>
+              </mat-card-content>
+            </mat-card>
+          </div>
+        </div>
+
+        <div *ngIf="uploadResult.foundMedicines.length === 0" class="no-medicines">
+          <!-- <mat-icon>search_off</mat-icon> -->
+          <h4>No Medicines Found</h4>
+          <p>No matching medicines were found for the extracted text.</p>
+        </div>
+
+        <div class="action-buttons">
+          <button mat-stroked-button (click)="uploadAnother()">
+            <!-- <mat-icon>add_photo_alternate</mat-icon> -->
+            Upload Another
+          </button>
+          <button mat-raised-button color="primary" (click)="goBack()">
+            Back to Dashboard
+          </button>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

@@ -1,0 +1,37 @@
+<div class="container">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Approved Pharmacies</mat-card-title>
+      <mat-card-subtitle>All approved pharmacies</mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+      <div *ngIf="isLoading" class="loading">
+        <mat-spinner></mat-spinner>
+        <p>Loading pharmacies...</p>
+      </div>
+
+      <!-- approved-pharmacies.html -->
+      <div *ngIf="isLoading" class="spinner-container">
+        <mat-spinner></mat-spinner>
+      </div>
+
+      <div *ngIf="!isLoading && pharmacies.length === 0" class="empty-message">
+        No approved pharmacies found.
+      </div>
+
+      <div *ngIf="!isLoading && pharmacies.length > 0" class="pharmacy-list">
+        <mat-card *ngFor="let pharmacy of pharmacies" class="pharmacy-card">
+          <mat-card-title>{{ pharmacy.name }}</mat-card-title>
+          <mat-card-content>
+            <p><strong>Address:</strong> {{ pharmacy.address }}</p>
+            <p><strong>Phone:</strong> {{ pharmacy.phone }}</p>
+            <p><strong>Email:</strong> {{ pharmacy.email }}</p>
+          </mat-card-content>
+          <mat-icon *ngIf="pharmacy.isApproved" class="approved-icon">check_circle</mat-icon>
+        </mat-card>
+      </div>
+
+    </mat-card-content>
+  </mat-card>
+</div>

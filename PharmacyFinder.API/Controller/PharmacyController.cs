@@ -52,24 +52,28 @@ namespace PharmacyFinder.API.Controllers
         
         return CreatedAtAction(nameof(GetPharmacies), new { id = pharmacy.Id }, pharmacy);
 }
-        [HttpPut("{id}/approve")]
+        [HttpPut("approve/{id}")]
         [Authorize(Roles = "Admin")]
         public IActionResult ApprovePharmacy(int id)
         {
-            //if (!ModelState.IsValid)
-            //{
-            //    return BadRequest(ModelState);
-            //}
             var pharmacy = _context.Pharmacies.Find(id);
             if (pharmacy == null)
                 return NotFound("Pharmacy not found.");
 
+            if (pharmacy.IsApproved)
+                return BadRequest("Pharmacy is already approved.");
+
             pharmacy.IsApproved = true;
             _context.SaveChanges();
-            return Ok(pharmacy);
+
+            return Ok(new
+            {
+                message = "Pharmacy approved successfully",
+                pharmacy = pharmacy
+            });
         }
 
-       
+
         [HttpGet("{pharmacyId}/medicines")]
         [Authorize(Roles = "Admin, Owner")]
         public IActionResult GetMedicines(int pharmacyId)

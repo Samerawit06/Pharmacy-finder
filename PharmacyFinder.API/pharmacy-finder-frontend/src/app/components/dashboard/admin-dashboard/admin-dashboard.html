@@ -1,0 +1,76 @@
+<div class="dashboard-container">
+  <h1>Admin Dashboard</h1>
+  <p class="welcome-message">Administrator Panel – Manage pharmacies and system operations</p>
+
+  <div class="cards-grid">
+  
+    <mat-card class="dashboard-card card-1">
+      <mat-card-header>
+        <mat-icon mat-card-avatar>business</mat-icon>
+        <mat-card-title>All Pharmacies</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p>View and manage all registered pharmacies in the system.</p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button color="primary" (click)="navigateToAllPharmacies()">Manage</button>
+      </mat-card-actions>
+    </mat-card>
+
+    
+    <mat-card class="dashboard-card card-2">
+      <mat-card-header>
+        <mat-icon mat-card-avatar>pending_actions</mat-icon>
+        <mat-card-title>Approval Queue</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p>Review and approve pending pharmacy registrations.</p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button color="primary" (click)="navigateToApprovalQueue()">Review</button>
+      </mat-card-actions>
+    </mat-card>
+
+    
+    <mat-card class="dashboard-card card-3">
+      <mat-card-header>
+        <mat-icon mat-card-avatar>add_business</mat-icon>
+        <mat-card-title>Add Pharmacy</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p>Register a new pharmacy to the system.</p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button color="accent" (click)="navigateToAddPharmacy()">Add</button>
+      </mat-card-actions>
+    </mat-card>
+
+   
+    <mat-card class="dashboard-card card-4">
+      <mat-card-header>
+        <mat-icon mat-card-avatar>medication</mat-icon>
+        <mat-card-title>Get Medicines</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p>View medicines available in a specific pharmacy.</p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button color="accent" (click)="navigateToGetMedicines()">View</button>
+      </mat-card-actions>
+    </mat-card>
+
+    <!-- System Overview -->
+    <!--<mat-card class="dashboard-card card-5">
+      <mat-card-header>
+        <mat-icon mat-card-avatar>dashboard</mat-icon>
+        <mat-card-title>System Overview</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p>View system statistics and performance metrics.</p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button color="primary" (click)="navigateToSystemOverview()">Stats</button>
+      </mat-card-actions>
+    </mat-card>-->
+  </div>
+</div>

@@ -1,0 +1,70 @@
+<div class="dashboard-container">
+  <h1>Customer Dashboard</h1>
+  <p class="welcome-message">Welcome to Pharmacy Finder! Find medicines and pharmacies near you.</p>
+
+  <div class="cards-grid">
+   
+    <mat-card class="dashboard-card">
+      <mat-card-header>
+        <mat-icon mat-card-avatar>description</mat-icon>
+        <mat-card-title>Upload Prescription</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p>Upload prescription image to automatically find medicines using OCR</p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button color="primary" (click)="navigateToPrescriptionUpload()">
+          Upload
+        </button>
+      </mat-card-actions>
+    </mat-card>
+
+    
+    <mat-card class="dashboard-card">
+      <mat-card-header>
+        <mat-icon mat-card-avatar>local_pharmacy</mat-icon>
+        <mat-card-title>Find Pharmacies</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p>Search for pharmacies by location or address</p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button color="primary" (click)="navigateToPharmacySearch()">
+          Search
+        </button>
+      </mat-card-actions>
+    </mat-card>
+
+   
+    <mat-card class="dashboard-card">
+      <mat-card-header>
+        <mat-icon mat-card-avatar>compare_arrows</mat-icon>
+        <mat-card-title>Compare Medicines</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p>Compare medicine prices across different pharmacies</p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button color="primary" (click)="navigateToMedicineCompare()">
+          Compare
+        </button>
+      </mat-card-actions>
+    </mat-card>
+
+    
+    <mat-card class="dashboard-card">
+      <mat-card-header>
+        <mat-icon mat-card-avatar>notifications</mat-icon>
+        <mat-card-title>Price Alerts</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p>Set alerts for medicine price drops and availability</p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button color="accent" disabled>
+          Coming Soon
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>

@@ -1,0 +1,102 @@
+<div class="dashboard-container">
+  <h1>Pharmacy Owner Dashboard</h1>
+  <h1>Hello, {{ title }}</h1>
+  <p class="welcome-message">Manage your pharmacy and medicine inventory</p>
+
+  <div class="cards-grid">
+    
+    <mat-card class="dashboard-card">
+      <mat-card-header>
+        <mat-icon mat-card-avatar>store</mat-icon>
+        <mat-card-title>My Pharmacy</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p>View and manage your pharmacy details, contact information, and settings</p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button color="primary" (click)="navigateToMyPharmacy()">
+          Manage Pharmacy
+        </button>
+      </mat-card-actions>
+    </mat-card>
+
+   
+    <mat-card class="dashboard-card">
+      <mat-card-header>
+        <mat-icon mat-card-avatar>medication</mat-icon>
+        <mat-card-title>Medicine Inventory</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p>View, edit, or remove medicines from your inventory</p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button color="primary" (click)="navigateToMedicineInventory()">
+          Manage Medicines
+        </button>
+      </mat-card-actions>
+    </mat-card>
+
+    
+    <mat-card class="dashboard-card">
+      <mat-card-header>
+        <mat-icon mat-card-avatar>add_circle</mat-icon>
+        <mat-card-title>Add New Medicine</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p>Add new medicines to your pharmacy's inventory with pricing and details</p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button color="primary" (click)="navigateToAddMedicine()">
+          Add Medicine
+        </button>
+      </mat-card-actions>
+    </mat-card>
+
+    <!-- Sales & Analytics -->
+    <!--<mat-card class="dashboard-card">
+    <mat-card-header>
+      <mat-icon mat-card-avatar>analytics</mat-icon>
+      <mat-card-title>Sales Analytics</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <p>View sales reports, inventory analytics, and performance metrics</p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" (click)="navigateToAnalytics()">
+        View Analytics
+      </button>
+    </mat-card-actions>
+  </mat-card>-->
+    <!-- Order Management -->
+    <mat-card class="dashboard-card">
+      <mat-card-header>
+        <mat-icon mat-card-avatar>shopping_cart</mat-icon>
+        <mat-card-title>Order Management</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p>Manage customer orders, prescriptions, and delivery status</p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button color="primary" (click)="navigateToOrders()">
+          Manage Orders
+        </button>
+      </mat-card-actions>
+    </mat-card>
+
+    <!-- Pharmacy Settings -->
+    <!--<mat-card class="dashboard-card">
+    <mat-card-header>
+      <mat-icon mat-card-avatar>settings</mat-icon>
+      <mat-card-title>Pharmacy Settings</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <p>Configure pharmacy settings, business hours, and preferences</p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" (click)="navigateToSettings()">
+        Settings
+      </button>
+    </mat-card-actions>
+  </mat-card>-->
+  </div>
+</div>

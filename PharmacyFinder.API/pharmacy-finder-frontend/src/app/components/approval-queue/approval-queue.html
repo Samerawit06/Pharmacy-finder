@@ -1,0 +1,78 @@
+<div class="approval-container">
+  <div class="header">
+    <div>
+      <h2>Pharmacy Approval Queue</h2>
+      <small *ngIf="pharmacies.length > 0">Logged in as Admin</small>
+    </div>
+    <div class="header-actions">
+      <button mat-button (click)="checkAuthStatus()" color="accent">
+        <mat-icon>security</mat-icon>
+        Check Auth
+      </button>
+      <button mat-raised-button color="primary" (click)="refresh()" [disabled]="isLoading">
+        <mat-icon>refresh</mat-icon>
+        Refresh
+      </button>
+    </div>
+  </div>
+
+
+  <div *ngIf="!getValidToken()" class="auth-warning">
+    <mat-icon color="warn">warning</mat-icon>
+    <div>
+      <h3>Authentication Required</h3>
+      <p>You need to be logged in as an administrator to approve pharmacies.</p>
+      <button mat-raised-button color="primary" routerLink="/login">
+        Go to Login
+      </button>
+    </div>
+  </div>
+
+  
+  <div *ngIf="getValidToken()">
+    
+    <div *ngIf="isLoading" class="loading-state">
+      <mat-spinner diameter="50"></mat-spinner>
+      <p>Loading pending pharmacies...</p>
+    </div>
+
+    
+    <div *ngIf="!isLoading && pharmacies.length === 0" class="empty-state">
+      <mat-icon color="primary">check_circle</mat-icon>
+      <h3>No Pending Approvals</h3>
+      <p>All pharmacies have been approved or there are no pharmacies to approve.</p>
+      <button mat-raised-button color="primary" (click)="refresh()">
+        Check Again
+      </button>
+    </div>
+
+   
+    <div *ngIf="!isLoading && pharmacies.length > 0" class="pharmacy-list">
+      <div class="list-header">
+        <h3>{{ pharmacies.length }} Pharmacy(ies) Pending Approval</h3>
+      </div>
+
+      <mat-card *ngFor="let pharmacy of pharmacies" class="pharmacy-card">
+        <h3>{{ pharmacy.name }}</h3>
+        <p><strong>Address:</strong> {{ pharmacy.address }}</p>
+        <p><strong>Contact:</strong> {{ pharmacy.contact }}</p>
+        <p>
+          <strong>Status:</strong>
+          <span [class]="pharmacy.isApproved ? 'status-approved' : 'status-pending'">
+            {{ pharmacy.isApproved ? 'Approved' : 'Pending' }}
+          </span>
+        </p>
+
+        <div class="actions">
+          <button mat-raised-button
+                  color="primary"
+                  [disabled]="isApproving[pharmacy.id]"
+                  (click)="approvePharmacy(pharmacy.id)">
+            <mat-spinner *ngIf="isApproving[pharmacy.id]" diameter="20"></mat-spinner>
+            <span *ngIf="!isApproving[pharmacy.id]">Approve</span>
+          </button>
+        </div>
+      </mat-card>
+    </div>
+  </div>
+</div>

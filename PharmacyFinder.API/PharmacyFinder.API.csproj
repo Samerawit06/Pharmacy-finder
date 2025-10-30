@@ -1,25 +1,48 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
-  <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
-    <Nullable>enable</Nullable>
-    <ImplicitUsings>enable</ImplicitUsings>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.0" />
-    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.6" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.10" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.10" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.tools" Version="9.0.10">
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-      <PrivateAssets>all</PrivateAssets>
-    </PackageReference>
-    <PackageReference Include="Microsoft.IdentityModel.JsonWebTokens" Version="8.14.0" />
-    <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="8.14.0" />
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
-    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.14.0" />
-    <PackageReference Include="Tesseract" Version="5.2.0" />
-  </ItemGroup>
+	<ItemGroup>
+	  <Compile Remove="pharmacy-finder-frontend\src\app\components\approved-pharmacies\**" />
+	  <Compile Remove="pharmacy-finder-frontend\src\app\NewFolder1\**" />
+	  <Content Remove="pharmacy-finder-frontend\src\app\components\approved-pharmacies\**" />
+	  <Content Remove="pharmacy-finder-frontend\src\app\NewFolder1\**" />
+	  <EmbeddedResource Remove="pharmacy-finder-frontend\src\app\components\approved-pharmacies\**" />
+	  <EmbeddedResource Remove="pharmacy-finder-frontend\src\app\NewFolder1\**" />
+	  <None Remove="pharmacy-finder-frontend\src\app\components\approved-pharmacies\**" />
+	  <None Remove="pharmacy-finder-frontend\src\app\NewFolder1\**" />
+	  <TypeScriptCompile Remove="pharmacy-finder-frontend\src\app\components\approved-pharmacies\**" />
+	  <TypeScriptCompile Remove="pharmacy-finder-frontend\src\app\NewFolder1\**" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Remove="pharmacy-finder-frontend\src\app\services\auth.service.ts" />
+	</ItemGroup>
+
+	
+	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.0" />
+		<PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="8.0.0" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.10" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.10">
+		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		  <PrivateAssets>all</PrivateAssets>
+		</PackageReference>
+		<PackageReference Include="Microsoft.TypeScript.MSBuild" Version="5.9.3">
+		  <PrivateAssets>all</PrivateAssets>
+		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="swashbuckle.AspNetCore" Version="9.0.6" />
+		<PackageReference Include="Tesseract" Version="5.2.0" />
+		<PackageReference Include="Tesseract.Drawing" Version="5.2.0" />
+	</ItemGroup>
+	<ItemGroup>
+	  <TypeScriptCompile Include="pharmacy-finder-frontend\src\app\services\auth.service.ts" />
+	</ItemGroup>
+
 
 </Project>

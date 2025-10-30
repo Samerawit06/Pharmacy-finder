@@ -1,0 +1,86 @@
+.dashboard-container {
+  padding: 40px 20px;
+  max-width: 100%;
+  margin: 0 auto;
+  min-height: 100vh;
+  background: #e9eef5; 
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+}
+
+  .dashboard-container h1 {
+    color: #1a237e; 
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 5px;
+  }
+
+.welcome-message {
+  font-size: 1.1rem;
+  color: #333;
+  margin-bottom: 40px;
+}
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 28px;
+}
+
+.dashboard-card {
+  border-radius: 14px;
+  background: #ffffff;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+  .dashboard-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+  }
+
+mat-card-header {
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #283593; 
+  color: #fff;
+  border-radius: 14px 14px 0 0;
+  font-weight: 600;
+}
+
+  mat-card-header mat-icon {
+    background: #3949ab33; 
+    border-radius: 50%;
+    padding: 10px;
+    font-size: 28px;
+    color: #ffca28; 
+  }
+
+mat-card-content {
+  padding: 16px;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #444;
+}
+
+mat-card-actions {
+  padding: 16px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+button[mat-raised-button] {
+  font-weight: 500;
+  padding: 10px 22px;
+  transition: box-shadow 0.2s ease, transform 0.2s ease, background 0.2s ease;
+  background: #3949ab; 
+  color: white;
+}
+
+  button[mat-raised-button]:hover {
+    background: #5c6bc0;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    transform: translateY(-2px);
+  }

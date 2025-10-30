@@ -1,0 +1,23 @@
+.my-pharmacy-container {
+  padding: 40px;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.pharmacy-card {
+  background: #f8f9ff;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+  padding: 20px;
+}
+
+mat-card-title {
+  color: #283593;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.loading-state, .error-state {
+  text-align: center;
+  margin-top: 40px;
+}

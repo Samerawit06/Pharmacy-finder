@@ -1,0 +1,132 @@
+.pharmacy-search-container {
+  padding: 40px 20px;
+  max-width: 100%;
+  margin: 0 auto;
+  min-height: 100vh;
+  background: linear-gradient(145deg, #283593 0%, #3949ab 50%, #5c6bc0 100%);
+  font-family: 'Roboto', sans-serif;
+  color: #333;
+}
+
+.search-card {
+  padding: 24px;
+  background: #f8f9ff;
+  border-radius: 12px;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.back-btn {
+  margin-right: 8px;
+}
+
+.full-width {
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.search-results {
+  margin-top: 24px;
+}
+
+.results-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.pharmacy-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border-radius: 12px;
+  padding: 16px;
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
+}
+
+  .pharmacy-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  }
+
+.pharmacy-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 12px;
+}
+
+  .pharmacy-header h4 {
+    margin: 0;
+    color: #283593;
+    font-size: 1.2rem;
+  }
+
+.status-approved {
+  color: #4caf50;
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+.status-pending {
+  color: #ff9800;
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+.pharmacy-card p {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 8px 0;
+  color: #666;
+}
+
+.pharmacy-card mat-icon {
+  font-size: 18px;
+  width: 18px;
+  height: 18px;
+}
+
+.error-message {
+  color: #f44336;
+  background-color: #ffebee;
+  border: 1px solid #f44336;
+  border-radius: 8px;
+  padding: 12px;
+  margin: 16px 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.no-results {
+  text-align: center;
+  color: #666;
+  padding: 40px 20px;
+}
+
+  .no-results mat-icon {
+    font-size: 48px;
+    width: 48px;
+    height: 48px;
+    margin-bottom: 16px;
+    opacity: 0.5;
+  }
+
+/* Responsive */
+@media (max-width: 768px) {
+  .results-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .search-card {
+    padding: 20px;
+  }
+}

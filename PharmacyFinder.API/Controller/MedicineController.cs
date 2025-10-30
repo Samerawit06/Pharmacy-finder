@@ -8,6 +8,7 @@ using System.Security.Claims;
 using Tesseract;
 using Tesseract.Interop;
 using System.IO;
+using System.Drawing; 
 
 namespace PharmacyFinder.API.Controllers
 {
@@ -126,7 +127,7 @@ namespace PharmacyFinder.API.Controllers
 
         //    string extractedText;
 
-            
+
         //    using (var ms = new MemoryStream())
         //    {
         //        image.CopyTo(ms);
@@ -149,11 +150,88 @@ namespace PharmacyFinder.API.Controllers
         //        price = m.Price
         //    }).ToList();
 
-        //    if (result.Count == 0) {
+        //    if (result.Count == 0)
+        //    {
         //        return NotFound("Medicne not available");
-        //            }
+        //    }
         //    return Ok(result);
         //}
-        
+
+        //[HttpPost("UploadImage")]
+        //public IActionResult UploadImage(IFormFile image)
+        //{
+        //    if (image == null || image.Length == 0)
+        //    {
+        //        return BadRequest("Enter the image of prescription");
+        //    }
+
+        //    try
+        //    {
+        //        string extractedText;
+
+        //        using (var ms = new MemoryStream())
+        //        {
+        //            image.CopyTo(ms);
+        //            var imageBytes = ms.ToArray();
+
+        //            var tessDataPath = Path.Combine(Directory.GetCurrentDirectory(), "tessdata");
+
+        //            // Check if tessdata directory exists
+        //            if (!Directory.Exists(tessDataPath))
+        //            {
+        //                return StatusCode(500, "Tesseract data directory not found");
+        //            }
+
+        //            using (var engine = new TesseractEngine(tessDataPath, "eng", EngineMode.Default))
+        //            {
+        //                using (var pix = Pix.LoadFromMemory(imageBytes))
+        //                {
+        //                    using (var page = engine.Process(pix))
+        //                    {
+        //                        extractedText = page.GetText()?.Trim();
+        //                    }
+        //                }
+        //            }
+        //        }
+
+        //        // Log extracted text for debugging
+        //        Console.WriteLine($"Extracted text: {extractedText}");
+
+        //        if (string.IsNullOrEmpty(extractedText))
+        //        {
+        //            return BadRequest("No text could be extracted from the image");
+        //        }
+
+        //        // FIXED: Use extractedText instead of image in the query
+        //        var result = _context.Medicines
+        //            .Include(m => m.Pharmacy) // Make sure to include Pharmacy
+        //            .Where(p => EF.Functions.Like(p.MedicineName, $"%{extractedText}%"))
+        //            .Select(m => new
+        //            {
+        //                medicineName = m.MedicineName, // Add medicine name
+        //                pharmacyName = m.Pharmacy.Name,
+        //                address = m.Pharmacy.Address,
+        //               // phone = m.Pharmacy.Phone,
+        //               // email = m.Pharmacy.Email,
+        //                price = m.Price,
+        //                isApproved = m.Pharmacy.IsApproved
+        //            })
+        //            .ToList();
+
+        //        // Return response that matches your Angular interface
+        //        return Ok(new
+        //        {
+        //            extractedText = extractedText,
+        //            foundMedicines = result
+        //        });
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        // Log the exception
+        //        Console.WriteLine($"Error processing image: {ex.Message}");
+        //        return StatusCode(500, $"Internal server error: {ex.Message}");
+        //    }
+        //}
+
     }
 }

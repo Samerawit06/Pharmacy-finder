@@ -1,0 +1,47 @@
+<div class="container">
+  <mat-card>
+    <mat-card-title>Medicine Inventory</mat-card-title>
+    <mat-card-content>
+      <mat-form-field appearance="fill">
+        <mat-label>Pharmacy ID</mat-label>
+        <input matInput type="number" [(ngModel)]="pharmacyId">
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" (click)="fetchMedicines()" [disabled]="isLoading">
+        <span *ngIf="!isLoading">Fetch Medicines</span>
+        <span *ngIf="isLoading">Loading...</span>
+      </button>
+
+      <div *ngIf="errorMessage" class="error-message">
+        {{ errorMessage }}
+      </div>
+
+      <div *ngIf="!isLoading && medicines.length === 0 && !errorMessage" class="no-medicines">
+        <p>No medicines found.</p>
+      </div>
+
+      <div *ngIf="!isLoading && medicines.length > 0" class="medicines-list">
+        <mat-card *ngFor="let med of medicines" class="medicine-card">
+          <h4>{{ med.medicineName }}</h4>
+          <p>Price: {{ med.price | currency }}</p>
+          <p>Quantity: {{ med.quantity }}</p>
+        </mat-card>
+      </div>
+
+      <div *ngIf="!isLoading && medicines.length > 0" class="medicines-list">
+        <mat-card *ngFor="let med of medicines" class="medicine-card">
+          <h4>{{ med.medicineName }}</h4>
+          <p>Price: {{ med.price | currency }}</p>
+          <p>Quantity: {{ med.quantity }}</p>
+
+          <div class="actions">
+            <button mat-raised-button color="warn" (click)="deleteMedicine(med.id)" [disabled]="isLoading">
+              Delete
+            </button>
+          </div>
+        </mat-card>
+      </div>
+
+    </mat-card-content>
+  </mat-card>
+</div>

@@ -1,0 +1,109 @@
+.container {
+  padding: 40px 20px;
+  max-width: 800px;
+  margin: 0 auto;
+  font-family: 'Roboto', sans-serif;
+}
+
+mat-card {
+  background: #f8f9ff;
+  border-radius: 12px;
+  padding: 30px 20px;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+mat-card-title {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #283593;
+  margin-bottom: 24px;
+}
+
+.upload-area {
+  border: 2px dashed #ccc;
+  border-radius: 12px;
+  padding: 40px 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: #ffffff;
+}
+
+  .upload-area:hover,
+  .upload-area.drag-over {
+    border-color: #283593;
+    background-color: #f5f5f5;
+  }
+
+.large-icon {
+  font-size: 64px;
+  color: #283593;
+  margin-bottom: 16px;
+}
+
+.file-types {
+  color: #666;
+  font-size: 0.9rem;
+  margin-top: 8px;
+}
+
+.file-info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 16px;
+  padding: 12px;
+  background: #f0f0f0;
+  border-radius: 8px;
+}
+
+.upload-btn {
+  display: block;
+  width: 100%;
+  margin-top: 20px;
+  font-weight: 500;
+  border-radius: 8px;
+}
+
+.results-section {
+  margin-top: 30px;
+}
+
+.success-message {
+  text-align: center;
+  padding: 20px;
+  background: #e8f5e8;
+  border-radius: 12px;
+  color: #2e7d32;
+}
+
+.success-icon {
+  font-size: 48px;
+  color: #4caf50;
+  margin-bottom: 12px;
+}
+
+.no-prescription {
+  text-align: center;
+  padding: 40px 20px;
+  color: #666;
+}
+
+  .no-prescription mat-icon {
+    font-size: 64px;
+    color: #c5cae9;
+    margin-bottom: 16px;
+  }
+
+
+@media (max-width: 768px) {
+  .upload-area {
+    padding: 30px 15px;
+  }
+
+  mat-card {
+    padding: 20px;
+  }
+}

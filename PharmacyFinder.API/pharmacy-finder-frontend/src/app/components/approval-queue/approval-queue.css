@@ -1,0 +1,147 @@
+.approval-container {
+  padding: 40px 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+  background: #f5f7fa;
+  min-height: 100vh;
+  font-family: 'Roboto', sans-serif;
+  color: #333;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  background: #ffffff;
+  padding: 16px 24px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+  .header h2 {
+    margin: 0;
+    color: #1e3a8a;
+  }
+
+.header-actions button {
+  margin-left: 8px;
+}
+
+.auth-warning {
+  display: flex;
+  align-items: center;
+  background: #fff5f5;
+  border-left: 6px solid #ef4444;
+  padding: 16px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+}
+
+  .auth-warning mat-icon {
+    font-size: 40px;
+    margin-right: 16px;
+    color: #ef4444;
+  }
+
+.loading-state, .empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  text-align: center;
+  color: #555;
+}
+
+  .loading-state mat-spinner, .empty-state mat-icon {
+    margin-bottom: 16px;
+  }
+
+  .empty-state mat-icon {
+    font-size: 64px;
+    color: #9ca3af;
+  }
+
+.pharmacy-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.list-header h3 {
+  margin-bottom: 16px;
+  color: #1e3a8a;
+  font-weight: 600;
+}
+
+.pharmacy-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 20px;
+  border-left: 4px solid #1e40af;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+  .pharmacy-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+  }
+
+  .pharmacy-card h3 {
+    color: #1e3a8a;
+    margin-bottom: 8px;
+  }
+
+  .pharmacy-card p {
+    font-size: 0.95rem;
+    margin: 4px 0;
+  }
+
+.status-approved {
+  color: #10b981;
+  font-weight: 600;
+  background: #d1fae5;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.status-pending {
+  color: #f59e0b;
+  font-weight: 600;
+  background: #fef3c7;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.actions {
+  margin-top: 10px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+button[mat-raised-button] {
+  font-weight: 500;
+  border-radius: 8px;
+}
+
+  button[mat-raised-button] mat-spinner {
+    vertical-align: middle;
+  }
+
+/* Responsive */
+@media (max-width: 768px) {
+  .approval-container {
+    padding: 20px;
+  }
+
+  .header {
+    flex-direction: column;
+    gap: 16px;
+    align-items: flex-start;
+  }
+
+  .pharmacy-list {
+    grid-template-columns: 1fr;
+  }
+}

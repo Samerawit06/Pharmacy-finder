@@ -1,0 +1,29 @@
+<div class="container" *ngIf="!isLoading; else loading">
+  <mat-card *ngIf="pharmacy; else noPharmacy">
+    <h2>{{ pharmacy.name }}</h2>
+    <p><strong>Address:</strong> {{ pharmacy.address }}</p>
+    <p><strong>Contact:</strong> {{ pharmacy.contact }}</p>
+    <p><strong>License:</strong> {{ pharmacy.licenseNumber }}</p>
+    <p><strong>Operating Hours:</strong> {{ pharmacy.operatingHours }}</p>
+
+    <div class="actions">
+      <button mat-raised-button color="primary" (click)="navigateToAddMedicine()">Add Medicine</button>
+      <button mat-raised-button color="accent" (click)="navigateToMedicineInventory()">View Inventory</button>
+    </div>
+
+    <h3 *ngIf="medicines.length > 0">Medicines</h3>
+    <ul *ngIf="medicines.length > 0">
+      <li *ngFor="let med of medicines">
+        {{ med.name }} — {{ med.quantity }} in stock ({{ med.price | currency }})
+      </li>
+    </ul>
+  </mat-card>
+
+  <ng-template #noPharmacy>
+    <p>{{ errorMessage || 'No pharmacy found for this owner.' }}</p>
+  </ng-template>
+</div>
+
+<ng-template #loading>
+  <p>Loading pharmacy details...</p>
+</ng-template>

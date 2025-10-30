@@ -1,0 +1,50 @@
+<div class="container">
+  <mat-card>
+    <mat-card-header>
+      <div class="header-content">
+        <button mat-icon-button (click)="goBack()" class="back-btn">
+          <mat-icon>arrow_back</mat-icon>
+        </button>
+        <div>
+          <mat-card-title>All Pharmacies</mat-card-title>
+          <mat-card-subtitle>Manage all registered pharmacies</mat-card-subtitle>
+        </div>
+      </div>
+    </mat-card-header>
+
+    <mat-card-content>
+      <div *ngIf="isLoading" class="loading">
+        <mat-spinner></mat-spinner>
+        <p>Loading pharmacies...</p>
+      </div>
+
+      <div *ngIf="!isLoading && pharmacies.length === 0" class="no-data">
+        <mat-icon>business</mat-icon>
+        <p>No pharmacies found</p>
+      </div>
+
+      <div *ngIf="!isLoading && pharmacies.length > 0" class="pharmacies-list">
+        <div *ngFor="let pharmacy of pharmacies" class="pharmacy-card">
+          <h3>{{ pharmacy.name }}</h3>
+          <p><strong>Address:</strong> {{ pharmacy.address }}</p>
+          <p><strong>Phone:</strong> {{ pharmacy.contact }}</p>
+          <p>
+            <strong>Status:</strong>
+            <span [class]="pharmacy.isApproved ? 'status-approved' : 'status-pending'">
+              {{ pharmacy.isApproved ? 'Approved' : 'Pending' }}
+            </span>
+          </p>
+
+          <div class="actions">
+            <button *ngIf="!pharmacy.isApproved"
+                    mat-raised-button
+                    color="primary"
+                    (click)="approvePharmacy(pharmacy.id)">
+              Approve
+            </button>
+          </div>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
